@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sdoroshenko.persistence.UserRepository">
+    <resultMap id="userMap" type="org.sdoroshenko.model.User">
+        <id property="id" column="id" javaType="java.lang.Long"/>
+        <result property="firstName" column="first_name" javaType="java.lang.String"/>
+        <result property="lastName" column="last_name" javaType="java.lang.String"/>
+        <association property="address"
+                     resultMap="org.sdoroshenko.persistence.AddressRepository.addressMap"
+                     notNullColumn="address_id"/>
+    </resultMap>
+
+    <select id="getUserById" resultMap="userMap" statementType="PREPARED">
+        SELECT id, first_name, last_name, address_id
+        FROM public.users
+        WHERE id=#{userId};
+    </select>
+</mapper>

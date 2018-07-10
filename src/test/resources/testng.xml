@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="persistence" annotations="JDK" parallel="false" thread-count="1">
+    <test name="persistence-unit" verbose="10" annotations="JDK">
+        <packages>
+            <package name="org.sdoroshenko.persistence"/>
+        </packages>
+    </test>
+</suite>
+
